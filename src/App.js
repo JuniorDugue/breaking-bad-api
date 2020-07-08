@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Header from "./components/shared/Header";
 import CharactersGrid from "./components/characters/CharacterGrid";
+import Search from "./components/shared/Search";
 import axios from "axios";
 import "./App.scss";
 
@@ -26,6 +27,7 @@ const App = () => {
   return (
     <div className="container">
       <Header />
+      <Search/>
       <CharactersGrid isLoading={isLoading} items={items} />
     </div>
   );
