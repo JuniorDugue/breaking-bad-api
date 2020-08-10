@@ -8,27 +8,25 @@ import "./App.scss";
 const App = () => {
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [query, setQuery] = useState("")
+  const [query, setQuery] = useState("");
 
   useEffect(() => {
     const fetchItems = async () => {
-      const result = await axios(
-        `https://www.breakingbadapi.com/api/characters?name=${query}`
-      )
+      const result = await axios(`https://www.breakingbadapi.com/api/characters?name=${query}`);
 
-      console.log(result.data);
+      // console.log(result.data);
 
       setItems(result.data);
       setIsLoading(false);
-    }
+    };
 
-    fetchItems()
-  }, [query])
+    fetchItems();
+  }, [query]);
 
   return (
     <div className="container">
       <Header />
-      <Search getQuery={(query) => setQuery }/>
+      <Search getQuery={(query) => setQuery} />
       <CharactersGrid isLoading={isLoading} items={items} />
     </div>
   );
